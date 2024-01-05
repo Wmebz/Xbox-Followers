@@ -55,39 +55,3 @@ class Follow_Bot:
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(Follow_Bot().initialise())
 
-import discord
-from discord.ext import commands
-
-# Configuración
-token = 'MTE5MjU5MzU3OTg4MTgwMzgxNw.Gh2teE.6h-ypZHbO8qruid_EUFavHCBPhbsXUCZpFOwMo'
-bot = commands.Bot(command_prefix='!')
-
-@bot.event
-async def on_ready():
-    print(f'Bot está listo como {bot.user.name}')
-
-@bot.event
-async def on_message(message):
-    if message.author.bot:
-        return  # Ignorar mensajes de otros bots
-    
-    # Analizar mensajes que comienzan con "/"
-    if message.content.startswith('/'):
-        await procesar_comando_personalizado(message)
-
-    await bot.process_commands(message)
-
-async def procesar_comando_personalizado(message):
-    # Analizar el comando personalizado y realizar acciones
-    contenido = message.content[1:]  # Eliminar la barra inicial
-    partes = contenido.split(' ')
-    comando = partes[0].lower()
-
-    # Implementar acciones según el comando
-    if comando == 'saludo':
-        await message.channel.send('¡Hola! Soy un bot de Discord.')
-
-    # Agregar más comandos según sea necesario
-
-# Iniciar el bot con el token
-bot.run('MTE5MjU5MzU3OTg4MTgwMzgxNw.Gh2teE.6h-ypZHbO8qruid_EUFavHCBPhbsXUCZpFOwMo')
