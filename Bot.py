@@ -1,15 +1,4 @@
-import asyncio
-import aiohttp
-from colorama import init
-from sys import platform
-from os import system, _exit
-
-
-class Follow_Bot:
-    def __init__(self):
-        self.users = self.collect_tokens()
-        self.followed = 0
-        self.failed = 0
+.failed = 0
         self.target = ''
 
 
@@ -21,16 +10,7 @@ class Follow_Bot:
                 self.followed += 1 
 
             else:
-                self.failed += 1             
-
-            print(f" [\x1b[1;32m+\x1b[1;37m] target: ({self.target}) | followed: ({self.followed}) | failed: ({self.failed})", end='\r', flush=True)
-        await session.close()   
- 
-
-    @staticmethod
-    def collect_tokens() -> None:
-        with open('tokens/tokens.txt', 'r') as token_file:
-            return [token.strip() for token in token_file]
+                
         
 
     
